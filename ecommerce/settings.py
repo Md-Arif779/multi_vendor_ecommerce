@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     #myapp
     'calc',
+    
+    #Third-party
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
