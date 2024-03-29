@@ -9,7 +9,20 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+from datetime import timedelta  
 
+# settings.py
+
+CELERY_BROKER_URL = 'your_broker_url'
+CELERY_TIMEZONE = 'UTC'
+
+CELERY_BEAT_SCHEDULE = {
+    'calculate_daily_revenue_task': {
+        'task': 'your_app.tasks.calculate_daily_revenue',
+        'schedule': timedelta(days=1),  # Run the task daily
+    },
+}
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -128,3 +141,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
