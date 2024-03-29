@@ -6,16 +6,16 @@ class Command(BaseCommand):
     help = 'Calculate and save daily revenue data'
 
     def handle(self, *args, **options):
-        # Calculate the date for the previous day
+        
         yesterday = datetime.now().date() - timedelta(days=1)
         
-        # Query orders created on the previous day
+        
         orders = Order.objects.filter(created_at__date=yesterday)
         
-        # Calculate total revenue for the day
+        
         total_revenue = sum(order.total_amount for order in orders)
         
-        # Save daily revenue data
+        
         daily_data, created = DailyData.objects.get_or_create(date=yesterday)
         daily_data.total_sales = total_revenue
         daily_data.save()

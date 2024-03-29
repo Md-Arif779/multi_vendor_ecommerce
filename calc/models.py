@@ -11,7 +11,7 @@ class User(AbstractUser):
     ]
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, default=BUYER)
 
-    # Add unique related_name arguments to resolve clashes
+    
     groups = models.ManyToManyField(Group, verbose_name=_('groups'), blank=True, related_name='calc_user_groups')
     user_permissions = models.ManyToManyField(Permission, verbose_name=_('user permissions'), blank=True, related_name='calc_user_permissions')
 
